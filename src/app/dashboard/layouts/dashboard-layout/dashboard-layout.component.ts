@@ -30,6 +30,7 @@ export class DashboardLayoutComponent {
         this.swalBasicsService.hideLoading();
         this.authService.logout();
       }
+      this.swalBasicsService.hideLoading();
     });
   }
 

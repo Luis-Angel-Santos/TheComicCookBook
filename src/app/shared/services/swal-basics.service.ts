@@ -15,7 +15,7 @@ export class SwalBasicsService {
       icon: 'success',
       showCancelButton: false,
       showConfirmButton: false,
-      timer: 2000
+      timer: 1000
     });
   }
 
