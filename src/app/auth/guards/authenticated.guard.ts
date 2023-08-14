@@ -2,6 +2,7 @@ import { CanActivateFn, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { inject } from '@angular/core';
 import { AuthStatus } from '../interfaces';
+import Swal from 'sweetalert2';
 
 export const AuthenticatedGuard: CanActivateFn = (route, state) => {
 
@@ -11,11 +12,14 @@ export const AuthenticatedGuard: CanActivateFn = (route, state) => {
   if(authService.authStatus() === AuthStatus.authenticated){
     return true;
   }
-  if(authService.authStatus() === AuthStatus.checking){
-    return false;
-  }
 
-  router.navigateByUrl('/auth/login');
+  Swal.fire({
+    title: 'Opps! :(',
+    text: 'Inicie sesión para continuar',
+    icon: 'error',
+    confirmButtonText: 'Vale',
+    confirmButtonColor: 'green',
+  }).then( () => router.navigateByUrl('/auth/login') );
   return false;
 
 };
