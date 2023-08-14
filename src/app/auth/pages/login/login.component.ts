@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import Swal from 'sweetalert2';
+import { SwalBasicsService } from '../../../shared/services/swal-basics.service';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +13,7 @@ export class LoginComponent {
 
   private fb = inject( FormBuilder );
   private authService = inject( AuthService );
+  private swalBasicsService = inject( SwalBasicsService );
 
   public myForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -19,22 +21,15 @@ export class LoginComponent {
   });
 
   login(){
-    Swal.showLoading();
+    this.swalBasicsService.showLoading();
     const { email, password } = this.myForm.value;
     this.authService.login( email, password ).subscribe({
       next: ( ok ) => {
         //login ok
       },
       error: ( error ) => {
-        Swal.hideLoading();
-        console.error( error);
-        Swal.fire({
-          title: 'Opps :(',
-          text: 'Parece que ocurrio un error: ' + error.message,
-          icon: 'error',
-          showCancelButton: false,
-          showConfirmButton: false
-        });
+        this.swalBasicsService.hideLoading();
+        this.swalBasicsService.showErrorAlert( error.message );
       }
     });
   }
