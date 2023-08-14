@@ -15,16 +15,19 @@ export class SwalBasicsService {
       icon: 'success',
       showCancelButton: false,
       showConfirmButton: false,
+      timer: 2000
     });
   }
 
   showErrorAlert( errorText: string ){
     return Swal.fire({
       title: 'Opps :(',
-      text: `Parece que ocurrio un error: ${ errorText }`,
+      text:  errorText,
       icon: 'error',
       showCancelButton: false,
-      showConfirmButton: false
+      showConfirmButton: true,
+      confirmButtonText: 'Ok',
+      confirmButtonColor: '#3085d6'
     });
   }
 

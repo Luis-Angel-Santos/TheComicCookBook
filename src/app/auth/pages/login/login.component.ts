@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import Swal from 'sweetalert2';
 import { SwalBasicsService } from '../../../shared/services/swal-basics.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,7 @@ export class LoginComponent {
   private fb = inject( FormBuilder );
   private authService = inject( AuthService );
   private swalBasicsService = inject( SwalBasicsService );
+  private router = inject( Router );
 
   public myForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -25,11 +27,16 @@ export class LoginComponent {
     const { email, password } = this.myForm.value;
     this.authService.login( email, password ).subscribe({
       next: ( ok ) => {
-        //login ok
+        this.swalBasicsService.hideLoading();
+        this.swalBasicsService.showSuccessAlert('Entrando a tu cuenta...')
+          .then( () => {
+            this.router.navigateByUrl('/dashboard');
+          });
+
       },
       error: ( error ) => {
         this.swalBasicsService.hideLoading();
-        this.swalBasicsService.showErrorAlert( error.message );
+        this.swalBasicsService.showErrorAlert( error );
       }
     });
   }
