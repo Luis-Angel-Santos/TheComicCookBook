@@ -17,6 +17,8 @@
                       <mat-icon matSuffix>{{ocultarPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
                   </button>
               </mat-form-field>
+              <re-captcha formControlName="recaptcha" siteKey={{publicSiteKey}}></re-captcha>
+              <br>
               <p *ngIf="myForm.get('email')?.errors && myForm.get('email')?.touched" class="error">
                   Por favor introduce un correo valido*
               </p>

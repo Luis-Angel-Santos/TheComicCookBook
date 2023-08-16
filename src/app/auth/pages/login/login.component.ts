@@ -4,6 +4,7 @@ import { AuthService } from '../../services/auth.service';
 import Swal from 'sweetalert2';
 import { SwalBasicsService } from '../../../shared/services/swal-basics.service';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environments';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,9 @@ export class LoginComponent {
   public myForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6)]],
+    recaptcha: ['', Validators.required]
   });
+  public publicSiteKey: string = environment.publicSiteKey;
 
   login(){
     this.swalBasicsService.showLoading();

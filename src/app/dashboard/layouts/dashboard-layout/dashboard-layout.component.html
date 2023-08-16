@@ -1,3 +1,29 @@
-<h1>Dashboard</h1>
-<br>
-<button (click)="onLogout()">Cerrar sesion</button>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+      <h1>TheComicCookBook</h1>
+      <button mat-icon-button (click)="sidenav.toggle();">
+          <mat-icon matListItemIcon>menu</mat-icon>
+      </button>
+      <span style="flex: 1 1 auto"></span>
+      <label style="font-size: 14px; margin-right: 20px;">Usuario: {{user()?.name}}</label>
+      <button matTooltip="Cerrar Sesión" mat-icon-button (click)="onLogout()">
+          <mat-icon>logout</mat-icon>
+      </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav opened="true" mode="side" style="width: 250px;">
+      <mat-nav-list>
+          <!--<mat-list-item *ngFor="let menu of listaMenus" [routerLink]="menu.url">
+              <mat-icon matListItemIcon>{{menu.icono}}</mat-icon>
+              {{menu.nombre}}
+              <mat-divider></mat-divider>
+          </mat-list-item>-->
+      </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+      <div style="height: 90vh">
+          <router-outlet></router-outlet>
+      </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
