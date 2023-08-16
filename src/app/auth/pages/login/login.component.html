@@ -1,50 +1,42 @@
-<form class="login100-form"
-      autocomplete="off"
-      [formGroup]="myForm"
-      (ngSubmit)="login()">
-
-    <span class="login100-form-title p-b-49">
-        Inicia Sesión
-    </span>
-
-    <div class="wrap-input100 m-b-23">
-        <span class="label-input100">Correo</span>
-        <input class="input100"
-               type="email"
-               placeholder="Correo electrónico"
-               formControlName="email">
-        <span class="focus-input100"></span>
-    </div>
-
-    <div class="wrap-input100">
-        <span class="label-input100">Contraseña</span>
-        <input class="input100"
-               type="password"
-               placeholder="Ingrese su contraseña"
-               formControlName="password">
-        <span class="focus-input100"></span>
-    </div>
-
-    <div class="text-right p-t-8 p-b-31"></div>
-
-    <div class="container-login100-form-btn">
-        <div class="wrap-login100-form-btn">
-            <div class="login100-form-bgbtn"></div>
-            <button class="login100-form-btn"
-                    type="submit"
-                    [disabled]="myForm.invalid">
-                Iniciar Sesión
-            </button>
-        </div>
-    </div>
-
-    <div class="flex-col-c p-t-60">
-        <span class="txt1 p-b-17">
-            ¿No tienes cuenta?
-        </span>
-
-        <a routerLink="/auth/register" class="txt2">
-            Crear una aquí
-        </a>
-    </div>
-</form>
+<div class="body animate__animated animate__fadeIn">
+  <mat-card class="loginCard">
+      <div class="header">
+          <h2>Bienvenido</h2>
+      </div>
+      <mat-card-content style="padding-bottom: 15px;">
+          <form autocomplete="off" [formGroup]="myForm" (ngSubmit)="login()">
+              <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Correo</mat-label>
+                  <input formControlName="email" matInput autocomplete="off" placeholder="Ingresa tu correo">
+                  <mat-icon matSuffix>mail</mat-icon>
+              </mat-form-field>
+              <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Contraseña</mat-label>
+                  <input [type]="ocultarPassword ? 'password' : 'text'" autocomplete="off" formControlName="password" matInput placeholder="Ingresa tu contraseña">
+                  <button mat-icon-button matSuffix (click)="ocultarPassword = !ocultarPassword" type="button">
+                      <mat-icon matSuffix>{{ocultarPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+              </mat-form-field>
+              <p *ngIf="myForm.get('email')?.errors && myForm.get('email')?.touched" class="error">
+                  Por favor introduce un correo valido*
+              </p>
+              <p *ngIf="myForm.get('password')?.errors && myForm.get('password')?.touched" color="warn" class="error">
+                  La contraseña es obligatoria*
+              </p>
+              <button class="full-width" mat-raised-button color="primary" type="submit" [disabled]="myForm.invalid">
+                Iniciar Sesión <mat-icon matSuffix>login</mat-icon>
+              </button>
+          </form>
+          <br>
+          <mat-divider></mat-divider>
+          <div class="register">
+            <span class="no-cuenta">
+                ¿No tienes cuenta?
+            </span>
+            <a class="crearCuenta" routerLink="/auth/register">
+                Crear una aquí
+            </a>
+          </div>
+      </mat-card-content>
+  </mat-card>
+</div>

@@ -1,1 +1,50 @@
-<p>register works!</p>
+<div class="body animate__animated animate__fadeIn">
+  <mat-card class="loginCard">
+      <div class="header">
+          <h2>Crear cuenta</h2>
+      </div>
+      <mat-card-content style="padding-bottom: 15px;">
+          <form autocomplete="off" [formGroup]="myForm" (ngSubmit)="register()">
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Nombre</mat-label>
+                <input formControlName="name" matInput autocomplete="off" placeholder="Ingresa tu nombre de usuario">
+                <mat-icon matSuffix>person</mat-icon>
+              </mat-form-field>
+              <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Correo</mat-label>
+                  <input formControlName="email" matInput autocomplete="off" placeholder="Ingresa tu correo">
+                  <mat-icon matSuffix>mail</mat-icon>
+              </mat-form-field>
+              <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Contraseña</mat-label>
+                  <input [type]="ocultarPassword ? 'password' : 'text'" autocomplete="off" formControlName="password" matInput placeholder="Ingresa tu contraseña">
+                  <button mat-icon-button matSuffix (click)="ocultarPassword = !ocultarPassword" type="button">
+                      <mat-icon matSuffix>{{ocultarPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+              </mat-form-field>
+              <p *ngIf="myForm.get('name')?.errors && myForm.get('name')?.touched" color="warn" class="error">
+                El nombre debe contener minimo 3 caracteres*
+              </p>
+              <p *ngIf="myForm.get('email')?.errors && myForm.get('email')?.touched" class="error">
+                  Por favor introduce un correo valido*
+              </p>
+              <p *ngIf="myForm.get('password')?.errors && myForm.get('password')?.touched" color="warn" class="error">
+                  La contraseña debe contener minimo 6 caracteres*
+              </p>
+              <button class="full-width" mat-raised-button color="primary" type="submit" [disabled]="myForm.invalid">
+                Registrarme <mat-icon matSuffix>account_circle</mat-icon>
+              </button>
+          </form>
+          <br>
+          <mat-divider></mat-divider>
+          <div class="register">
+            <span class="no-cuenta">
+                Ya tengo una cuenta
+            </span>
+            <a class="crearCuenta" routerLink="/auth/login">
+                Iniciar Sesión
+            </a>
+          </div>
+      </mat-card-content>
+  </mat-card>
+</div>

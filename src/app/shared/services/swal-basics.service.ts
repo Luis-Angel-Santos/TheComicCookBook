@@ -15,7 +15,7 @@ export class SwalBasicsService {
       icon: 'success',
       showCancelButton: false,
       showConfirmButton: false,
-      timer: 1000
+      timer: 2000
     });
   }
 
@@ -26,7 +26,7 @@ export class SwalBasicsService {
       icon: 'error',
       showCancelButton: false,
       showConfirmButton: true,
-      confirmButtonText: 'Ok',
+      confirmButtonText: 'Vale',
       confirmButtonColor: '#3085d6'
     });
   }

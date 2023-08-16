@@ -68,6 +68,19 @@ export class AuthService {
 
   }
 
+  register(name: string, email: string, password: string ): Observable<boolean>{
+
+    const url = `${ this.baseUrl }/auth/register`;
+    const body = { name, email, password };
+
+    return this.http.post<LoginResponse>( url, body )
+      .pipe(
+        map( ({ user, token }) => this.setAuthentication( user, token )),
+        catchError( error => throwError( () => error.error.message ))
+      );
+
+  }
+
   logout(): void{
     this._currentUser.set( null );
     this._authStatus.set( AuthStatus.notAuthenticated );

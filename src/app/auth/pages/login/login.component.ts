@@ -16,7 +16,7 @@ export class LoginComponent {
   private authService = inject( AuthService );
   private swalBasicsService = inject( SwalBasicsService );
   private router = inject( Router );
-
+  public ocultarPassword: boolean = true;
   public myForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6)]],
