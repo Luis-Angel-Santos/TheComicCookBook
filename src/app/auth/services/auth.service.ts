@@ -10,7 +10,7 @@ import { AuthStatus, CheckTokenResponse, LoginResponse, User } from '../interfac
 })
 export class AuthService {
 
-  private readonly baseUrl: string = environment.baseUrl;
+  private readonly baseUrl: string = environment.endPointAuth;
   private http = inject( HttpClient );
 
   private _currentUser = signal<User|null>(null);
