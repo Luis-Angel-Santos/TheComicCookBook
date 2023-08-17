@@ -6,13 +6,21 @@ import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-l
 import { HomeComponent } from './recipes/pages/home/home.component';
 import { RecetaComponent } from './recipes/pages/receta/receta.component';
 import { SharedModule } from '../shared/shared.module';
+import { RestaurantsComponent } from './recipes/pages/restaurants/restaurants.component';
+import { IngredientsComponent } from './recipes/pages/ingredients/ingredients.component';
+import { ProdcutsComponent } from './recipes/pages/prodcuts/prodcuts.component';
+import { ToolsComponent } from './recipes/pages/tools/tools.component';
 
 
 @NgModule({
   declarations: [
     DashboardLayoutComponent,
     HomeComponent,
-    RecetaComponent
+    RecetaComponent,
+    RestaurantsComponent,
+    IngredientsComponent,
+    ProdcutsComponent,
+    ToolsComponent
   ],
   imports: [
     CommonModule,
