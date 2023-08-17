@@ -13,13 +13,7 @@ export const AuthenticatedGuard: CanActivateFn = (route, state) => {
     return true;
   }
 
-  Swal.fire({
-    title: 'Opps! :(',
-    text: 'Inicie sesión para continuar',
-    icon: 'error',
-    confirmButtonText: 'Vale',
-    confirmButtonColor: 'green',
-  }).then( () => router.navigateByUrl('/auth/login') );
+  router.navigateByUrl('/auth/login');
   return false;
 
 };

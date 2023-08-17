@@ -14,11 +14,11 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav opened="false" mode="over" style="width: 270px;">
       <mat-nav-list>
-          <!--<mat-list-item *ngFor="let menu of listaMenus" [routerLink]="menu.url">
-              <mat-icon matListItemIcon>{{menu.icono}}</mat-icon>
+          <mat-list-item *ngFor="let menu of listaMenus" routerLink={{menu.ruta}}>
+              <mat-icon matListItemIcon>{{menu.icon}}</mat-icon>
               {{menu.nombre}}
               <mat-divider></mat-divider>
-          </mat-list-item>-->
+          </mat-list-item>
       </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
