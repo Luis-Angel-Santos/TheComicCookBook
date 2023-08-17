@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { SwalBasicsService } from 'src/app/shared/services/swal-basics.service';
 import { Router } from '@angular/router';
-import { User } from '../../interfaces';
 
 @Component({
   selector: 'app-register',

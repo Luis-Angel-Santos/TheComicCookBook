@@ -1,6 +1,7 @@
 /*animate.css*/
 @import 'animate.css/animate.min';
 @import 'animate.css';
+@import 'bootstrap';
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

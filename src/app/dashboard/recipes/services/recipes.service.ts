@@ -11,7 +11,7 @@ import { Ingredients } from '../interfaces/ingredients/ingredient.interface';
 })
 export class RecipesService {
 
-  private urlAPI: string = `${environment.endPointAPI}recipes/}`;
+  private urlAPI: string = `${environment.endPointAPI}recipes/`;
   private apiKey: string = environment.apiKey;
   private httpClient: HttpClient = inject(HttpClient);
 

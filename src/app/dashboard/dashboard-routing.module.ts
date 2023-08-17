@@ -1,12 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
+import { HomeComponent } from './recipes/pages/home/home.component';
+import { RecetaComponent } from './recipes/pages/receta/receta.component';
 
 const routes: Routes = [
   {
     path: '',
     component : DashboardLayoutComponent,
-    //children: []
+    children: [
+      { path: '', component: HomeComponent },
+      { path: 'receta/:id', component: RecetaComponent },
+    ]
   }
 ];
 

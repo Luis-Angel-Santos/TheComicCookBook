@@ -24,6 +24,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 
 import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [],
@@ -31,6 +32,7 @@ import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
     CommonModule,
   ],
   exports: [
+    ReactiveFormsModule,
     MatCardModule,
     MatInputModule,
     MatSelectModule,
