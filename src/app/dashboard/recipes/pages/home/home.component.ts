@@ -15,17 +15,18 @@ export class HomeComponent {
   private alertService: SwalBasicsService = inject(SwalBasicsService);
   private fb = inject( FormBuilder );
 
-  randomRecipes: Recipes = {
+  public randomRecipes: Recipes = {
     recipes: []
   };
-  autocompleteRecipes!: Recipe[];
-  rowSpan: number = 5;
-  isLoading: boolean = true;
-  terminoEncontrado: boolean = true;
-  autocompleteToSearch: string = "";
+  public autocompleteRecipes!: Recipe[];
+  public rowSpan: number = 5;
+  public isLoading: boolean = true;
+  public terminoEncontrado: boolean = true;
+  public autocompleteToSearch: string = "";
   public myControl: FormGroup = this.fb.group({
     search: ['']
   });
+  public placehoders: string[] = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
 
   ngOnInit(): void {
     this.recipesService.getRamdomRecipes().subscribe({
@@ -47,6 +48,7 @@ export class HomeComponent {
   getAutoCompleteRecipes() {
     this.recipesService.getAutocompleteRecipes(this.myControl.get('search')?.value, 5).subscribe({
       next: (data) => {
+        console.log(data);
         if(data.length == 0) {
           this.terminoEncontrado = false;
         }

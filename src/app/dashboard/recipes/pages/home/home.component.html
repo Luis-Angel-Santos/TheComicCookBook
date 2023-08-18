@@ -1,16 +1,11 @@
 <div class="container animate__animated animate__fadeIn">
   <h3>Recetas del día</h3>
-  <mat-spinner *ngIf="isLoading"></mat-spinner>
-  <form [formGroup]="myControl" class="d-flex" role="search">
-    <mat-form-field class="example-full-width">
-      <input type="text"
-             placeholder="Buscar una receta"
-             aria-label="Buscador"
-             formControlName="search"
-             matInput
-             [matAutocomplete]="auto">
-      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-        <mat-option *ngFor="let recipe of autocompleteRecipes" [value]="autocompleteToSearch">
+  <form [formGroup]="myControl" class="search">
+    <mat-form-field class="search">
+      <mat-label>Buscar receta</mat-label>
+      <input type="text" placeholder="Buscar una receta" aria-label="Buscador" formControlName="search" matInput [matAutocomplete]="auto">
+      <mat-autocomplete  autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option routerLink="receta/{{recipe.id}}" class="search" *ngFor="let recipe of autocompleteRecipes" [value]="autocompleteToSearch">
           {{recipe.id}} - {{recipe.title}}
         </mat-option>
         <mat-option *ngIf="!terminoEncontrado">
@@ -31,6 +26,30 @@
               <h4 class="card-title">{{recipe.title}}</h4>
               <p class="card-text truncate-text" [innerHTML]="recipe.summary"></p>
               <button mat-raised-button color="primary" routerLink="receta/{{recipe.id}}">Ir a la receta</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col animate__animated animate__fadeIn" aria-hidden="true" *ngFor="let recipePlaceholder of placehoders">
+      <div class="card mb-3" style="max-width: 500px;" *ngIf="isLoading">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="" class="img-fluid rounded-start">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h4 class="placeholder-glow">
+                <span class="placeholder col-6"></span>
+              </h4>
+              <p class="card-text placeholder-glow">
+                <span class="placeholder col-7"></span>
+                <span class="placeholder col-4"></span>
+                <span class="placeholder col-4"></span>
+                <span class="placeholder col-6"></span>
+                <span class="placeholder col-8"></span>
+              </p>
+              <button mat-raised-button class="disabled placeholder col-4" aria-disabled="true" color="primary"></button>
             </div>
           </div>
         </div>
