@@ -20,8 +20,8 @@ export class DashboardLayoutComponent {
 
   ngOnInit(): void {
     this.menuItemService.getMenuItems().subscribe( menuItems => {
+
       this.listaMenus = menuItems;
-      console.log(this.listaMenus);
 
     });
   }

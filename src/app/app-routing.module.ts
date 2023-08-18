@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthenticatedGuard } from './auth/guards/authenticated.guard';
 import { isNotAuthenticatedGuard } from './auth/guards/is-not-authenticated.guard';
+import { Page404Component } from './shared/page404/page404.component';
 
 const routes: Routes = [
   {
@@ -16,7 +17,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'auth'
+    component: Page404Component
   }
 ];
 
