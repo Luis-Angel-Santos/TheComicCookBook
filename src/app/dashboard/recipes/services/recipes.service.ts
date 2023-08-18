@@ -28,7 +28,7 @@ export class RecipesService {
   }
 
   //obtener informacion de una receta
-  getRecipe(idRecipe: number): Observable<Recipe> {
+  getRecipe(idRecipe: string): Observable<Recipe> {
     return this.httpClient.get<Recipe>(`${this.urlAPI}${idRecipe}/information?apiKey=${this.apiKey}`);
   }
 

@@ -1,10 +1,38 @@
 <div class="container">
-  <div class="card text-bg-dark">
-    <img src="..." class="card-img" alt="...">
-    <div class="card-img-overlay">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      <p class="card-text"><small>Last updated 3 mins ago</small></p>
+  <div class="image">
+    <img [src]="infoReceta.image" class="img-fluid" alt="Imagen">
+  </div>
+  <div class="content">
+    <div class="title">{{infoReceta.title}}</div>
+    <div class="description">
+      <p [innerHTML]="infoReceta.summary"></p>
+    </div>
+    <div class="extra-data">
+      <mat-chip-listbox aria-label="Extras">
+        <mat-chip>
+          <mat-icon matChipAvatar fontIcon="health_and_safety"></mat-icon>
+          Saludable: {{infoReceta.healthScore <= 0 ? 'No': infoReceta.healthScore}}
+        </mat-chip>
+        <mat-chip color="accent"color="accent">
+          <mat-icon matChipAvatar fontIcon="scheduled"></mat-icon>
+          Tiempo de preparación {{infoReceta.readyInMinutes}} min
+        </mat-chip>
+        <mat-chip color="warn">
+          <mat-icon matChipAvatar fontIcon="nutririon"></mat-icon>
+          Vegano: {{infoReceta.vegan ? 'Si' : 'No'}}
+        </mat-chip>
+        <mat-chip>
+          <mat-icon matChipAvatar fontIcon="star"></mat-icon>
+          Calificación: {{infoReceta.spoonacularScore ? infoReceta.spoonacularScore : 'N/A' }}
+        </mat-chip>
+      </mat-chip-listbox>
     </div>
   </div>
+</div>
+
+<div class="ingredient-list">
+  <h2>Lista de Ingredientes:</h2>
+  <ul *ngFor="let ingrediente of infoReceta.extendedIngredients">
+    <li>{{ingrediente.originalName}}</li>
+  </ul>
 </div>

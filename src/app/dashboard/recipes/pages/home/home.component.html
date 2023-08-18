@@ -5,7 +5,7 @@
       <mat-label>Buscar receta</mat-label>
       <input type="text" placeholder="Buscar una receta" aria-label="Buscador" formControlName="search" matInput [matAutocomplete]="auto">
       <mat-autocomplete  autoActiveFirstOption #auto="matAutocomplete">
-        <mat-option routerLink="receta/{{recipe.id}}" class="search" *ngFor="let recipe of autocompleteRecipes" [value]="autocompleteToSearch">
+        <mat-option [routerLink]="['receta', recipe.id]" class="search" *ngFor="let recipe of autocompleteRecipes" [value]="autocompleteToSearch">
           {{recipe.id}} - {{recipe.title}}
         </mat-option>
         <mat-option *ngIf="!terminoEncontrado">
@@ -25,7 +25,7 @@
             <div class="card-body">
               <h4 class="card-title">{{recipe.title}}</h4>
               <p class="card-text truncate-text" [innerHTML]="recipe.summary"></p>
-              <button mat-raised-button color="primary" routerLink="receta/{{recipe.id}}">Ir a la receta</button>
+              <button mat-raised-button color="primary" [routerLink]="['receta', recipe.id]">Ir a la receta</button>
             </div>
           </div>
         </div>

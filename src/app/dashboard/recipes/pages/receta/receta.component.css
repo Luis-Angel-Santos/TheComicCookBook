@@ -1,3 +1,51 @@
-.container{
-  padding: 15px;
+.container {
+  display: flex;
+  margin: 20px;
+}
+
+.image {
+  padding: 10px;
+  text-align: center;
+}
+
+.image img {
+  min-width: 350px;
+  height: auto;
+  border-radius: 15px;
+}
+
+.content {
+  padding: 10px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.extra-data {
+  font-size: 14px;
+  color: #888;
+}
+
+.ingredient-list {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.ingredient-list ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
 }
