@@ -49,3 +49,17 @@
     flex-direction: column;
   }
 }
+
+.container-ingredients{
+  margin: 25px;
+}
+
+@media (max-width: 768px) {
+  .ingredients {
+    flex: 0 0 100%;
+  }
+}
+
+.steps{
+  max-width: 450px;
+}

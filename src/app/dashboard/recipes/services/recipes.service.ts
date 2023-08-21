@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environments';
 import { Recipe, RecipeDescription, Recipes, Taste } from '../interfaces/recipes/recipe.interface';
 import { Nutrition } from '../interfaces/ingredients/ingredientInformation.interface';
 import { Ingredients } from '../interfaces/ingredients/ingredient.interface';
+import { RecipeInstructions } from '../interfaces/recipes/recipeInstructions.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -58,22 +59,22 @@ export class RecipesService {
   }
 
   //obtener ingredientes de una receta
-  getIngredients(idRecipe: number): Observable<Ingredients> {
+  getIngredients(idRecipe: string): Observable<Ingredients> {
     return this.httpClient.get<Ingredients>(`${this.urlAPI}${idRecipe}/ingredientWidget.json?apiKey=${this.apiKey}`);
   }
 
   //obtener descripcion de una receta
-  getSummary(idRecipe: number): Observable<RecipeDescription> {
+  getSummary(idRecipe: string): Observable<RecipeDescription> {
     return this.httpClient.get<RecipeDescription>(`${this.urlAPI}${idRecipe}/summary?apiKey=${this.apiKey}`);
   }
 
   //obtener instrucciones de una receta
-  getInstructions(idRecipe: number): Observable<RecipeDescription> {
-    return this.httpClient.get<RecipeDescription>(`${this.urlAPI}${idRecipe}/analyzedInstructions?apiKey=${this.apiKey}`);
+  getInstructions(idRecipe: string): Observable<RecipeInstructions[]> {
+    return this.httpClient.get<RecipeInstructions[]>(`${this.urlAPI}${idRecipe}/analyzedInstructions?apiKey=${this.apiKey}`);
   }
 
   //obtener sabores de una receta
-  getFlavors(idRecipe: number): Observable<Taste> {
+  getFlavors(idRecipe: string): Observable<Taste> {
     return this.httpClient.get<Taste>(`${this.urlAPI}${idRecipe}/tasteWidget.json?apiKey=${this.apiKey}`);
   }
 

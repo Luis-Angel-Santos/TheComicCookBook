@@ -13,6 +13,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatStepperModule } from '@angular/material/stepper';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -25,7 +26,6 @@ import { MatListModule } from '@angular/material/list';
 
 import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
 import { ReactiveFormsModule } from '@angular/forms';
-import { Page404Component } from './page404/page404.component';
 
 @NgModule({
   declarations: [],
@@ -54,6 +54,7 @@ import { Page404Component } from './page404/page404.component';
     MatNativeDateModule,
     MatChipsModule,
     MatTooltipModule,
+    MatStepperModule,
     RecaptchaModule,
     RecaptchaFormsModule
   ],

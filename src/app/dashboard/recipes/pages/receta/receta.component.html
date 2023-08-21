@@ -13,12 +13,12 @@
           <mat-icon matChipAvatar fontIcon="health_and_safety"></mat-icon>
           Saludable: {{infoReceta.healthScore <= 0 ? 'No': infoReceta.healthScore}}
         </mat-chip>
-        <mat-chip color="accent"color="accent">
+        <mat-chip>
           <mat-icon matChipAvatar fontIcon="scheduled"></mat-icon>
           Tiempo de preparación {{infoReceta.readyInMinutes}} min
         </mat-chip>
-        <mat-chip color="warn">
-          <mat-icon matChipAvatar fontIcon="nutririon"></mat-icon>
+        <mat-chip>
+          <mat-icon matChipAvatar fontIcon="star"></mat-icon>
           Vegano: {{infoReceta.vegan ? 'Si' : 'No'}}
         </mat-chip>
         <mat-chip>
@@ -29,10 +29,20 @@
     </div>
   </div>
 </div>
+<div class="container-ingredients">
+  <mat-divider></mat-divider>
+  <button mat-button (click)="verIngredients()">Ver Ingredientes <mat-icon fontIcon="visibility"></mat-icon></button>
+  <h2>Preparación</h2>
+  <mat-stepper class="steps" orientation="vertical">
+    <ng-container *ngFor="let step of instructionRecipe.steps">
+      <mat-step>
+        <ng-template matStepLabel>Paso {{step.number}}</ng-template>
+        <ng-template matStepContent>
+          <p>{{step.step}}</p>
+          <button mat-button matStepperNext>Siguiente</button>
+        </ng-template>
+      </mat-step>
+    </ng-container>
+  </mat-stepper>
 
-<div class="ingredient-list">
-  <h2>Lista de Ingredientes:</h2>
-  <ul *ngFor="let ingrediente of infoReceta.extendedIngredients">
-    <li>{{ingrediente.originalName}}</li>
-  </ul>
 </div>
