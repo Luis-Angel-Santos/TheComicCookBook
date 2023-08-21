@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container animate__animated animate__fadeIn">
   <div class="image">
     <img [src]="infoReceta.image" class="img-fluid" alt="Imagen">
   </div>
@@ -29,7 +29,7 @@
     </div>
   </div>
 </div>
-<div class="container-ingredients">
+<div class="container-ingredients animate__animated animate__fadeIn">
   <mat-divider></mat-divider>
   <button mat-button (click)="verIngredients()">Ver Ingredientes <mat-icon fontIcon="visibility"></mat-icon></button>
   <h2>Preparación</h2>
@@ -44,5 +44,44 @@
       </mat-step>
     </ng-container>
   </mat-stepper>
+</div>
 
+<div class="container animate__animated animate__fadeIn" *ngIf="!isLoaded" aria-hidden="true">
+  <div class="col-md-4">
+    <img src="" class="img-fluid rounded-start">
+  </div>
+  <div class="row" style="width: 100%;">
+    <div class="placeholder-glow">
+      <span class="placeholder col-12"></span>
+      <span class="placeholder col-6"></span>
+      <span class="placeholder col-12"></span>
+      <span class="placeholder col-12"></span>
+      <span class="placeholder col-6"></span>
+      <span class="placeholder col-6"></span>
+      <span class="placeholder col-5"></span>
+      <span class="placeholder col-6"></span>
+      <span class="placeholder col-8"></span>
+      <span class="placeholder col-6"></span>
+      <span class="placeholder col-3"></span>
+    </div>
+    <div class="extra-data">
+      <mat-chip-listbox>
+        <mat-chip>
+          <p class="placeholder-glow">
+            <span class="placeholder col-6"></span>
+          </p>
+        </mat-chip>
+        <mat-chip>
+          <p class="placeholder-glow">
+            <span class="placeholder col-6"></span>
+          </p>
+        </mat-chip>
+        <mat-chip>
+          <p class="placeholder-glow">
+            <span class="placeholder col-6"></span>
+          </p>
+        </mat-chip>
+        </mat-chip-listbox>
+    </div>
+  </div>
 </div>

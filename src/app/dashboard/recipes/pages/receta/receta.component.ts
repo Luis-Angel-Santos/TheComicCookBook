@@ -20,6 +20,7 @@ export class RecetaComponent {
   private idRecipe!: string;
   public infoReceta!: Recipe;
   public instructionRecipe!: RecipeInstructions ;
+  public isLoaded:boolean = false;
 
   constructor(){
 
@@ -33,6 +34,7 @@ export class RecetaComponent {
     this.recipesService.getRecipe(this.idRecipe).subscribe({
       next: (receta) => {
         this.infoReceta = receta;
+        this.isLoaded = true;
       },
       error: (error) => {
         this.swalBasicsService.showErrorAlert(error.message);
