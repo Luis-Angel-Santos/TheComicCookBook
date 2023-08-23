@@ -6,7 +6,7 @@
       <input type="text" placeholder="Buscar una receta" aria-label="Buscador" formControlName="search" matInput [matAutocomplete]="auto">
       <mat-autocomplete  autoActiveFirstOption #auto="matAutocomplete">
         <mat-option [routerLink]="['receta', recipe.id]" class="search" *ngFor="let recipe of autocompleteRecipes" [value]="autocompleteToSearch">
-          <img class="imgAvatar" src="https://spoonacular.com/recipeImages/{{recipe.id}}-90x90.{{recipe.imageType}}" alt="Imagen no disponible"/>
+          <img class="imgAvatar" [src]="recipe.id | imageUrl: recipe.imageType : '90x90'" alt="Imagen no disponible"/>
           {{recipe.title}}
         </mat-option>
         <mat-option *ngIf="!terminoEncontrado">
