@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RecipesService } from '../../services/recipes.service';
 import { SwalBasicsService } from '../../../../shared/services/swal-basics.service';
-import { Recipe } from '../../interfaces/recipes/recipe.interface';
+import { Recipe, Recipes } from '../../interfaces/recipes/recipe.interface';
 import Swal from 'sweetalert2';
 import { RecipeInstructions } from '../../interfaces/recipes/recipeInstructions.interface';
 
@@ -21,12 +21,14 @@ export class RecetaComponent {
   public infoReceta!: Recipe;
   public instructionRecipe!: RecipeInstructions ;
   public isLoaded:boolean = false;
+  public similarRecipes!: Recipe[];
 
   constructor(){
 
     this.idRecipe = this.activatedRoute.snapshot.paramMap.get('id')!;
     this.getInfoRecipe();
     this.getInstructionsRecipe();
+    this.getSimilarRecipes();
 
   }
 
@@ -62,6 +64,18 @@ export class RecetaComponent {
     this.recipesService.getInstructions(this.idRecipe).subscribe({
       next: (instructions) => {
         this.instructionRecipe = instructions[0];
+      },
+      error: (error) => {
+        this.swalBasicsService.showErrorAlert(error.message);
+      }
+    });
+  }
+
+  getSimilarRecipes(){
+    this.recipesService.getSimilarRecipes(this.idRecipe).subscribe({
+      next: (recipes) => {
+        this.similarRecipes = recipes;
+        console.info(this.similarRecipes);
       },
       error: (error) => {
         this.swalBasicsService.showErrorAlert(error.message);

@@ -24,8 +24,8 @@ export class RecipesService {
   }
 
   //obtener recetas similares
-  getSimilarRecipes(idRecipe: number): Observable<Recipe[]> {
-    return this.httpClient.get<Recipe[]>(`${this.urlAPI}${idRecipe}/similar?apiKey=${this.apiKey}`);
+  getSimilarRecipes(idRecipe: string): Observable<Recipe[]> {
+    return this.httpClient.get<Recipe[]>(`${this.urlAPI}${idRecipe}/similar?apiKey=${this.apiKey}&number=5`);
   }
 
   //obtener informacion de una receta

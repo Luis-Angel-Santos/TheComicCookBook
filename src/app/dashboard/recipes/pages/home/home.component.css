@@ -37,4 +37,10 @@ form{
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 5px;
+}
+
+.imgAvatar{
+  border-radius: 100%;
+  max-width: 50px;
 }
