@@ -10,6 +10,7 @@ import { RestaurantsComponent } from './recipes/pages/restaurants/restaurants.co
 import { IngredientsComponent } from './recipes/pages/ingredients/ingredients.component';
 import { ProdcutsComponent } from './recipes/pages/prodcuts/prodcuts.component';
 import { ToolsComponent } from './recipes/pages/tools/tools.component';
+import { ImageUrlPipe } from './pipes/image-url.pipe';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ToolsComponent } from './recipes/pages/tools/tools.component';
     RestaurantsComponent,
     IngredientsComponent,
     ProdcutsComponent,
-    ToolsComponent
+    ToolsComponent,
+    ImageUrlPipe
   ],
   imports: [
     CommonModule,
