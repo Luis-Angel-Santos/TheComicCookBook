@@ -32,8 +32,8 @@
 <div class="container-ingredients animate__animated animate__fadeIn">
   <mat-divider></mat-divider>
   <button mat-button (click)="verIngredients()">Ver Ingredientes <mat-icon fontIcon="visibility"></mat-icon></button>
-  <div class="container">
-    <div class="preparacion">
+  <div class="container row">
+    <div *ngIf="isLoaded" class="preparacion col">
       <h2>Preparación</h2>
       <mat-stepper class="steps" orientation="vertical">
         <ng-container *ngFor="let step of instructionRecipe.steps">
@@ -47,24 +47,16 @@
         </ng-container>
       </mat-stepper>
     </div>
-    <div class="relacionadas">
+    <div class="relacionadas col">
       <h2>Podria interesarte</h2>
-      <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item" *ngFor="let recipe of similarRecipes">
-            <img src="recipe.id | imageUrl: recipe.imageType : '90x90'" class="d-block w-100" alt="...">
+      <div class="row">
+        <div class="card col-md-auto text-bg-dark" *ngFor="let recipe of similarRecipes" [routerLink]="['/dashboard/receta', recipe.id]">
+          <img [src]="recipe.id | imageUrl: recipe.imageType : '312x150'" class="card-img" alt="{{recipe.title}}">
+          <div class="card-img-overlay">
+            <h4 class="card-title">{{recipe.title}}</h4>
           </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
       </div>
-
     </div>
   </div>
 </div>
